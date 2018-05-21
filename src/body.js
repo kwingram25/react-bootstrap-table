@@ -97,15 +97,14 @@ const Body = (props) => {
   }
 
   return (
-    <tbody>
-      <CSSTransitionGroup
-        transitionName="tr"
-        transitionEnterTimeout={ 500 }
-        transitionLeaveTimeout={ 300 }
-      >
-        { content }
-      </CSSTransitionGroup>
-    </tbody>
+    <CSSTransitionGroup
+      component="tbody"
+      transitionName="tr"
+      transitionEnterTimeout={ 500 }
+      transitionLeaveTimeout={ 300 }
+    >
+      { content }
+    </CSSTransitionGroup>
   );
 };
 
