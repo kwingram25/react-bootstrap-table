@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cs from 'classnames';
-import CSSTransitionGroup from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import _ from './utils';
 import Row from './row';
@@ -77,34 +77,37 @@ const Body = (props) => {
       const selectable = !nonSelectable || !nonSelectable.includes(key);
 
       return (
-        <Row
-          key={ key }
-          row={ row }
-          keyField={ keyField }
-          rowIndex={ index }
-          columns={ columns }
-          cellEdit={ cellEdit }
-          editable={ editable }
-          selectable={ selectable }
-          selected={ selected }
-          selectRow={ selectRow }
-          style={ style }
-          className={ classes }
-          attrs={ attrs }
-        />
+        <CSSTransition
+          key={ `css-transition-${key}` }
+          classNames="tr"
+          timeout={ 500 }
+        >
+          <Row
+            key={ key }
+            row={ row }
+            keyField={ keyField }
+            rowIndex={ index }
+            columns={ columns }
+            cellEdit={ cellEdit }
+            editable={ editable }
+            selectable={ selectable }
+            selected={ selected }
+            selectRow={ selectRow }
+            style={ style }
+            className={ classes }
+            attrs={ attrs }
+          />
+        </CSSTransition>
       );
     });
   }
 
   return (
-    <CSSTransitionGroup
+    <TransitionGroup
       component="tbody"
-      transitionName="tr"
-      transitionEnterTimeout={ 500 }
-      transitionLeaveTimeout={ 300 }
     >
       { content }
-    </CSSTransitionGroup>
+    </TransitionGroup>
   );
 };
 
