@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cs from 'classnames';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import FlipMove from 'react-flip-move';
 
 import _ from './utils';
 import Row from './row';
@@ -82,21 +83,23 @@ const Body = (props) => {
           classNames="tr"
           timeout={ 500 }
         >
-          <Row
-            key={ key }
-            row={ row }
-            keyField={ keyField }
-            rowIndex={ index }
-            columns={ columns }
-            cellEdit={ cellEdit }
-            editable={ editable }
-            selectable={ selectable }
-            selected={ selected }
-            selectRow={ selectRow }
-            style={ style }
-            className={ classes }
-            attrs={ attrs }
-          />
+          <FlipMove typeName={ null }>
+            <Row
+              key={ key }
+              row={ row }
+              keyField={ keyField }
+              rowIndex={ index }
+              columns={ columns }
+              cellEdit={ cellEdit }
+              editable={ editable }
+              selectable={ selectable }
+              selected={ selected }
+              selectRow={ selectRow }
+              style={ style }
+              className={ classes }
+              attrs={ attrs }
+            />
+          </FlipMove>
         </CSSTransition>
       );
     });
